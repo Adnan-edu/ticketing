@@ -8,7 +8,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: adnan/auth
+    - image: cygnetops/auth
       context: auth
       docker:
         dockerfile: Dockerfile
