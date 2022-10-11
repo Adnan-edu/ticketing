@@ -1,5 +1,6 @@
 import express, {Request, Response} from 'express';
 import {body, validationResult} from 'express-validator';
+import jwt from 'jsonwebtoken';
 import { RequestValidationError } from '../errors/request-validation-error';
 import { DatabaseConnectionError } from '../errors/database-connection-error';
 import 'express-async-errors';
@@ -29,6 +30,18 @@ router.post('/api/users/signup', [
     }
     const user = User.build({email, password});
     await user.save();
+    //Genarate JWT
+    const userJwt = jwt.sign({
+        id: user.id,
+        email: user.email
+    }, 'asdf');
+    //Store it on the session object
+    //Cookie session library take this object 
+    //serialize it and send it back to user browser 
+    req.session = {
+        jwt: userJwt 
+    };
+
     res.status(201).send(user);
 });
 
