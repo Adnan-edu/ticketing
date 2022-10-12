@@ -34,7 +34,7 @@ router.post('/api/users/signup', [
     const userJwt = jwt.sign({
         id: user.id,
         email: user.email
-    }, 'asdf');
+    }, process.env.JWT_KEY!);
     //Store it on the session object
     //Cookie session library take this object 
     //serialize it and send it back to user browser 
