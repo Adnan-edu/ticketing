@@ -15,7 +15,7 @@ app.set('trust proxy', true);
 app.use(json());
 app.use(cookieSession({
   signed: false,    //JWT already encrypted, disable encryption
-  secure: true      //Only be used over HTTPS connections
+  secure: process.env.NODE_ENV !== 'test'      //Only be used over HTTPS connections
 }));
 
 app.use(currentUserRouter);
