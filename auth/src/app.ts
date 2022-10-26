@@ -5,9 +5,10 @@ import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signupRouter } from "./routes/signup";
 import { signoutRouter } from "./routes/signout";
-import { errorHandler } from "./middlewares/error-handler";
-import { NotFoundError } from "./errors/not-found-error";
+import { errorHandler, NotFoundError } from '@adnan-edu-tickets/common';
 import cookieSession from "cookie-session";
+
+
 
 const app = express();
 //express trust traffic as being secured even though it's coming from the proxy

@@ -1,6 +1,5 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { signinRouter } from '../signin';
 
 it('Responds with details about the current user', async () => {
  
