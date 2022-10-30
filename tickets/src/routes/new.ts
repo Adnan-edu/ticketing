@@ -21,6 +21,7 @@ async (req: Request, res: Response) => {
     userId: req.currentUser!.id 
   });
   await ticket.save();
+  res.status(201).send(ticket);
 });
 
 export { routers as createTicketRouter };
