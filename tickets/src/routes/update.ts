@@ -7,6 +7,8 @@ import {
   NotAuthorizedError,
 } from '@adnan-edu-tickets/common';
 import { Ticket } from '../models/ticket';
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -32,6 +34,15 @@ router.put(
       price: req.body.price
     });
     await ticket.save();
+    //publish Ticket update event
+
+    new TicketUpdatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId
+    });
+
     res.send(ticket);
   }
 );
