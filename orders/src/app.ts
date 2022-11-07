@@ -4,10 +4,10 @@ import { json } from "body-parser";
 
 import { errorHandler, NotFoundError, currentUser } from '@adnan-edu-tickets/common';
 import cookieSession from "cookie-session";
-import { createTicketRouter } from "./routes/new";
-import { showTicketRouter } from "./routes/show";
-import { indexTicketRouter } from "./routes";
-import {updateTicketRouter} from "./routes/update"
+import { deleteOrderRouter } from './routes/delete';
+import { indexOrderRouter } from './routes/index';
+import { newOrderRouter } from './routes/new';
+import { showOrderRouter } from './routes/show';
 
 
 
@@ -20,10 +20,11 @@ app.use(cookieSession({
   secure: process.env.NODE_ENV !== 'test'      //Only be used over HTTPS connections
 }));
 app.use(currentUser);
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+
+app.use(deleteOrderRouter);
+app.use(indexOrderRouter);
+app.use(newOrderRouter);
+app.use(showOrderRouter);
 
 app.all('*', async(req, res)=>{
   throw new NotFoundError();
