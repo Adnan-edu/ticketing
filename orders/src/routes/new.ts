@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import express, { Request, Response } from 'express';
-import { requireAuth, validateRequest } from '@cygnetops/common';
+import { requireAuth, validateRequest } from '@adnan-edu-tickets/common';
 import { body } from 'express-validator';
 
 const router = express.Router();
