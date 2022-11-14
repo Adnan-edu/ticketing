@@ -10,7 +10,7 @@ const router = express.Router();
 router.post(
   '/api/orders',
   requireAuth,
-  [
+  [ //added validation middleware - ticket id
     body('ticketId')
       .not()
       .isEmpty()
