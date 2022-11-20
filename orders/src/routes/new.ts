@@ -3,7 +3,6 @@ import express, { Request, Response } from 'express';
 import { requireAuth, validateRequest, NotFoundError } from '@adnan-edu-tickets/common';
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
-import { Order } from '../models/order';
 
 const router = express.Router();
 
