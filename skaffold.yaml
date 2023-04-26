@@ -10,7 +10,7 @@ build:
   # googleCloudBuild:
   #   projectId: ticketing-dev-364604
   artifacts:
-    - image: cygnetops/auth
+    - image: adnanedu/auth
       context: auth
       docker:
         dockerfile: Dockerfile
