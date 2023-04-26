@@ -8,7 +8,7 @@ interface OrderAttrs {
   expiresAt: Date;
   ticket: TicketDoc;
 }
-
+export {OrderStatus};
 interface OrderDoc extends mongoose.Document {
   userId: string;
   status: OrderStatus;
